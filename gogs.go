@@ -1,4 +1,4 @@
-// +build go1.5
+// +build go1.8
 
 // Copyright 2014 The Gogs Authors. All rights reserved.
 // Use of this source code is governed by a MIT-style
@@ -12,11 +12,11 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/gogits/gogs/cmd"
-	"github.com/gogits/gogs/modules/setting"
+	"github.com/gogs/gogs/cmd"
+	"github.com/gogs/gogs/pkg/setting"
 )
 
-const APP_VER = "0.9.165.0221 / 0.10 RC"
+const APP_VER = "0.11.88.0220"
 
 func init() {
 	setting.AppVer = APP_VER
@@ -28,14 +28,14 @@ func main() {
 	app.Usage = "A painless self-hosted Git service"
 	app.Version = APP_VER
 	app.Commands = []cli.Command{
-		cmd.CmdWeb,
+		cmd.Web,
 		cmd.Serv,
-		cmd.CmdHook,
-		cmd.CmdDump,
-		cmd.CmdCert,
-		cmd.CmdAdmin,
-		cmd.CmdImport,
+		cmd.Hook,
+		cmd.Cert,
+		cmd.Admin,
+		cmd.Import,
+		cmd.Backup,
+		cmd.Restore,
 	}
-	app.Flags = append(app.Flags, []cli.Flag{}...)
 	app.Run(os.Args)
 }
